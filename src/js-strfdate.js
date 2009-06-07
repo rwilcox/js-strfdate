@@ -18,10 +18,21 @@ Date.prototype.strfdate = function (format){
 	
 	var pieces = new Array();
 	var piece;
+	var previousChar = '';
 	for (var c=0; c < format.length; c++){
 		if (format[c] == '\\'){
 			c += 1;
 			piece = format[c];
+		} if (format[c] == "%") {
+			
+			if (previousChar == "%") {
+				// %% means we want to put a literal % in our string...
+				piece = format[c]
+			} else {
+				// else we are starting a new formatting string...
+				previousChar = format[c];
+				continue;
+			}
 		} else {
 			try {
 				formatter = 'format_'+format[c]+'()';
@@ -31,6 +42,7 @@ Date.prototype.strfdate = function (format){
 			}
 		}
 		pieces.push(piece);
+		previousChar = piece;
 	}
 	return pieces.join('');
 	

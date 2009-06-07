@@ -29,7 +29,7 @@
 
 <script type="text/javascript">
 // <![CDATA[
-new Test.Unit.Runner({
+var ourRunner = new Test.Unit.Runner({
   // replace this with your real tests
   setup: function() {
     
@@ -45,8 +45,14 @@ new Test.Unit.Runner({
   
   testCanDoMonthDateYear: function() { with(this) {
     a = new Date(2009, 05, 31);
-    assertEqual( "05-05-2009", a.strfdate("%M-%d-%Y") );
-  }}
+    assertEqual( "05-05-2009", a.strfdate("%m-%d-%Y") );
+  }},
+
+  testDoublePercentDoesEscapePercent: function() { with(this) {
+		a = new Date(2009, 05, 31);
+		assertEqual( "%", a.strfdate("%%") );
+		//alert("ran");
+	}}
     
 }, {testLog: "testlog"}); 
 // For each Test.UnitRunner instance, specify the element id where results will be
@@ -56,5 +62,6 @@ new Test.Unit.Runner({
 // e.g. {testLog: "testlog2"}
 // ]]>
 </script>
+
 </body>
 </html>
