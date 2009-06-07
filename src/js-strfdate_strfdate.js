@@ -5,6 +5,12 @@ String.prototype.zfill = function (width){
 	return str;
 }
 
+	/**
+		@function Date.prototype.strfdate
+		@abstract An implementation of stfdate for JavaScript. See man stftime (or your favorite scripting language that passes date formats in this manner) for documentation on what the format strings do
+		@param format The string format to use to convert the date into a string.
+		@result a string containing the date formatted via the guidelines specified in the format parameter.
+	*/
 Date.prototype.strfdate = function (format){
 	var dt = this;
 	
