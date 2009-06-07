@@ -41,8 +41,8 @@ Date.prototype.strfdate = function (format){
 				piece = format[c];
 			}
 		}
-		pieces.push(piece);
-		previousChar = piece;
+		pieces.push(piece);	//piece is the evaluated string from one of the format functions OR whatever we determined it should be
+		previousChar = format[c];	// we want to save the current character, NOT the previously evaluated results
 	}
 	return pieces.join('');
 	

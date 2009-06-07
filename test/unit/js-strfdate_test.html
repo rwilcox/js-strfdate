@@ -42,14 +42,20 @@ var ourRunner = new Test.Unit.Runner({
   testTruth: function() { with(this) {
     assert(true);
   }},
+
+  testCanDoMonth: function() { with(this) {
+    a = new Date(2009, 05 -1, 31);	//javascript dates are 0=January, etc
+		assertEqual( 5, a.getMonth() +1 );
+    assertEqual( "05", a.strfdate("%m") );
+  }},
   
   testCanDoMonthDateYear: function() { with(this) {
-    a = new Date(2009, 05, 31);
+    a = new Date(2009, 05 -1, 05);
     assertEqual( "05-05-2009", a.strfdate("%m-%d-%Y") );
   }},
 
   testDoublePercentDoesEscapePercent: function() { with(this) {
-		a = new Date(2009, 05, 31);
+		a = new Date(2009, 05 -1, 31);
 		assertEqual( "%", a.strfdate("%%") );
 		//alert("ran");
 	}}
