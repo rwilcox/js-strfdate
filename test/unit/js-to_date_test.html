@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>JavaScript unit test file</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <script src="../assets/jsunittest.js" type="text/javascript"></script>
+  <script src="../../src/js-strfdate_to_date.js" type="text/javascript"></script>
+  
+  <link rel="stylesheet" href="../assets/unittest.css" type="text/css" />
+</head>
+<body>
+
+<div id="content">
+
+  <div id="header">
+    <h1>JavaScript unit test file</h1>
+    <p>
+      This file tests <strong>js-to_date.js</strong>.
+    </p>
+  </div>
+
+  <!-- Log output (one per Runner, via {testLog: "testlog"} option)-->
+  <div id="testlog"></div>
+  
+  <!-- Put sample/test html here -->
+  <div id="sample"></div>
+</div>
+
+<script type="text/javascript">
+// <![CDATA[
+var ourRunner = new Test.Unit.Runner({
+  // replace this with your real tests
+  setup: function() {
+    
+  },
+  
+  teardown: function() {
+    
+  },
+  
+  testTruth: function() { with(this) {
+    assert(true);
+  }},
+
+  testDoesThrowTypeErrorWhenOffFormat: function() { with(this) {
+		var my_partial = function() { a = "2009-X"; return(a.to_date_chunks("%Y/"))  };
+		assertRaise("TypeError", my_partial, "Invalid Date Format")
+  }},
+
+  testCanExtractYearChunk: function() { with(this) {
+		a = "2009";
+		var res = a.to_date_chunks("%Y");
+		assertEqual( 2009, res[0] );
+  }},
+
+  testCanExtractYearChunkInInternationalShortDate: function() { with(this) {
+		a = "2009-05-31";
+		var res = a.to_date_chunks("%Y");
+		assertEqual( 2009, res[0] );
+  }},
+
+  testCanExtractYearChunkInUSShortDate: function() { with(this) {
+		a = "05-31-2009";
+		var res = a.to_date_chunks("%m-%d-%Y");
+		assertEqual( 2009, res[0] );
+  }},
+
+  testCanExtractMonthChunk: function() { with(this) {
+		a = "05";
+		var res = a.to_date_chunks("%m");
+		assertEqual( 5, res[1] );
+  }},
+
+  testCanExtractMonthChunkInInternationalShortDate: function() { with(this) {
+		a = "2009-05-31";
+		var res = a.to_date_chunks("%Y-%m-%d");
+		assertEqual( 5, res[1] );
+  }},
+
+  testCanExtractMonthChunkInUSShortDate: function() { with(this) {
+		a = "05-31-2009";
+		var res = a.to_date_chunks("%m-%d-%Y");
+		assertEqual( 5, res[1] );
+  }},
+  testCanExtractDayChunk: function() { with(this) {
+		a = "31";
+		var res = a.to_date_chunks("%d");
+		assertEqual( 31, res[2] );
+  }},
+  testCanExtractDayChunkInInternationalShortDate: function() { with(this) {
+		a = "2009-05-31";
+		var res = a.to_date_chunks("%Y-%m-%d");
+		assertEqual( 31, res[2] );
+  }},
+  testCanExtractDayChunkInUSShortDate: function() { with(this) {
+		a = "05-31-2009";
+		var res = a.to_date_chunks("%m-%d-%Y");
+		assertEqual( 31, res[2] );
+  }},
+
+  testDoesHandleEscapedPercentages: function() { with(this) {
+		a = "2009%";
+		var res = a.to_date_chunks("%Y%%");
+		assertEqual( 2009, res[0] );
+  }},
+    
+  testDoesHandleEscapedPercentagesInBiggerString: function() { with(this) {
+		a = "2009%-31";
+		var res = a.to_date_chunks("%Y%%-%d");
+		assertEqual( 2009, res[0] );
+		assertEqual( 31, res[2] );
+  }},
+
+  testDoesThrowTypeErrorWhenOffFormatWithPercentages: function() { with(this) {
+		var my_partial = function() { a = "2009-"; return(a.to_date_chunks("%Y%%"))  };
+		assertRaise("TypeError", my_partial, "Invalid Date Format")
+  }},
+
+  testDoesThrowTypeErrorWhenOffFormatWithPercentagesInMiddle: function() { with(this) {
+		var my_partial = function() { a = "2009%/31"; return(a.to_date_chunks("%Y%%-%d"))  };
+		assertRaise("TypeError", my_partial, "Invalid Date Format")
+  }},
+
+}, {testLog: "testlog"}); 
+// For each Test.UnitRunner instance, specify the element id where results will be
+// published; e.g. <div id="testlog"/> above.
+// That is, you can have multiple "new Test.Unit.Runner() { ... }" on this page, just
+// create more <div id="testlog2"></div> etc, and pass the element id to the hash above:
+// e.g. {testLog: "testlog2"}
+// ]]>
+</script>
+
+</body>
+</html>
