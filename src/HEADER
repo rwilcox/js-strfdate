@@ -1,8 +1,8 @@
-/*  Js Strfdate, version <%= APP_VERSION %>
+/*  Js Strfdate, version 0.0.1
  *  (c) 2009 Ryan Wilcox
  *
- *  Js Strfdate is freely distributable under 
+ *  JS-strfdate is freely distributable under 
  *  the terms of an MIT-style license.
- *  For details, see the web site: http://NOTE-ENTER-URL.com
+ *  For details, see the web site: <http://github.com/rwilcox/js-strfdate/tree/master>
  *
  *--------------------------------------------------------------------------*/

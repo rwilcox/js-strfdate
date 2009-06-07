@@ -1,9 +1,4 @@
-/*
-    js-strfdate.
-    
-    See <http://github.com/rwilcox/js-strfdate/tree/master> for the latest version
 
-*/
 String.prototype.zfill = function (width){
 	var str = '' + this;
 	while (str.length < width) str = '0' + str;
