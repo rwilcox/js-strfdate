@@ -99,6 +99,11 @@ var ourRunner = new Test.Unit.Runner({
 		assertEqual( 31, res[2] );
   }},
 
+  testToDateWorksWithUSShortDate: function() { with(this) {
+		a = "05-31-2009";
+		var res = a.to_date("%m-%d-%Y");
+		assertEqual( new Date(2009, 04 , 31).toDateString(), res.toDateString() );
+  }},
   testDoesHandleEscapedPercentages: function() { with(this) {
 		a = "2009%";
 		var res = a.to_date_chunks("%Y%%");

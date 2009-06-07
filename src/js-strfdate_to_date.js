@@ -9,6 +9,7 @@
 	*/
 String.prototype.to_date = function(format)	{
 	var results = this.to_date_chunks(format);
+	return new Date( results[0], results[1] - 1, results[2] );
 }
 	
 String.prototype.to_date_chunks = function (format){
