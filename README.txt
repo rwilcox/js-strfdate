@@ -27,3 +27,6 @@ Why would I want to use this?:
     
 Author:
     Ryan Wilcox, http://www.wilcoxd.com
+    
+License:
+	Public Domain
