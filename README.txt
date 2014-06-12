@@ -1,4 +1,4 @@
-JS-strfdate
+JS strfdate
 
 Description:
     This JavaScript project implements strfdate for JavaScript date instances. It also implements a to_date function on String instances, that takes a strfdate format string and returns a valid date object from the passed in string.
