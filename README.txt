@@ -32,5 +32,5 @@ License:
 	Public Domain
 
 Status:
-	Probably you can find better code that does this, and better JS from me
+	Probably you can find better code that does this, and better JS from me.
 
